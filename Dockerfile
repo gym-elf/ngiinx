@@ -1,5 +1,6 @@
 FROM ubuntu:22.04
 
+
 RUN apt update && apt install -y \
     build-essential \
     checkinstall \
@@ -11,19 +12,14 @@ RUN apt update && apt install -y \
     libssl-dev \
     sudo \
     bc \
+    ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /work /artifacts /reports
-
 RUN useradd -ms /bin/bash builder && \
-    chown -R builder:builder /work /artifacts /reports
+    echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-COPY build_env.sh /usr/local/bin/
+COPY build_env.sh /usr/local/bin/build_env.sh
 RUN chmod +x /usr/local/bin/build_env.sh
 
-RUN useradd -ms /bin/bash builder && echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-WORKDIR /work
-
+WORKDIR /src
 USER builder
-

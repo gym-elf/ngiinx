@@ -42,11 +42,11 @@ echo "Build type: $MODE" >> "$REPORT"
 # сборка контейнера
 
 docker run --rm \
-    -v "$(pwd)":/work \
+    -v "$(pwd)":/src \
     -e MODE="$MODE" \
-    -e REVISION="REVISION" \
+    -e REVISION="$REVISION" \
     $IMAGE_NAME \
-    /build_env.sh
+    /usr/local/bin/build_env.sh
 
 # сравнение покрытия
 

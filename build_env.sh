@@ -4,11 +4,11 @@ set -e
 BUILD_TYPE="${MODE:-release}"
 REVISION="${REVISION:-1}"
 
-cd /work/nginx
+cd /src
 
-BUILD_DIR="/work/build"
-ARTIFACTS_DIR="/work/artifacts"
-REPORTS_DIR="/work/reports"
+BUILD_DIR="/src/build"
+ARTIFACTS_DIR="/src/artifacts"
+REPORTS_DIR="/src/reports"
 
 mkdir -p "$BUILD_DIR" "$ARTIFACTS_DIR" "$REPORTS_DIR"
 
@@ -42,7 +42,7 @@ make clean || true
 
 # компиляция
 
-make -j$(nproc)
+make -j"$(nproc)"
 
 # для release strip
 
