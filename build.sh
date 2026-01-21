@@ -42,7 +42,8 @@ echo "Build type: $MODE" >> "$REPORT"
 # сборка контейнера
 
 docker run --rm \
-    -v "$(pwd)":/src \
+    -v "$(pwd)/artifacts:/src/artifacts" \
+    -v "$(pwd)/reports:/src/reports" \
     -e MODE="$MODE" \
     -e REVISION="$REVISION" \
     $IMAGE_NAME \
