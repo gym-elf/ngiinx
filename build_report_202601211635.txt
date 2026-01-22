@@ -1,3 +1,0 @@
-Run: 2
-Revision: 2
-Build type: release
