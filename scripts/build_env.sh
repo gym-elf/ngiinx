@@ -12,7 +12,7 @@ COVERAGE_DIR="$BUILD_DIR/coverage"
 
 REPORTS_DIR="/reports"
 
-mkdir -p "$BUILD_DIR" "$ARTIFACTS_DIR" "$REPORTS_DIR" "INSTALL_DIR" "COVERAGE_DIR"
+mkdir -p "$BUILD_DIR" "$ARTIFACTS_DIR" "$REPORTS_DIR" "$INSTALL_DIR" "$COVERAGE_DIR"
 
 CFLAGS=""
 LDFLAGS=""
@@ -82,7 +82,7 @@ if [[ "$BUILD_TYPE" == "coverage" ]]; then
 
     lcov --capture --directory . --output-file "$COVERAGE_DIR/coverage.info"
     genhtml "$COVERAGE_DIRcoverage.info" --output-directory "$COVERAGE_DIR/coverage_html"
-    # процент строк
+    # процент строкO
 
     COVERAGE=$(lcov --summary "$COVERAGE_DIR/coverage.info" | grep lines | awk '{print $2}' | tr -d '%')
     echo "$COVERAGE" > "$REPORTS_DIR/coverage_current.txt"
