@@ -84,7 +84,7 @@ build_report_<date>_<mode>.txt
 ./scripts/build.sh <mode>
 ```
 
-Где <mode>:
+Где mode:
 
 * release
 * debug
