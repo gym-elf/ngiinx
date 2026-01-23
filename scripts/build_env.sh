@@ -81,7 +81,7 @@ if [[ "$BUILD_TYPE" == "coverage" ]]; then
     ./objs/nginx -v || true
 
     lcov --capture --directory . --output-file "$COVERAGE_DIR/coverage.info"
-    genhtml "$COVERAGE_DIRcoverage.info" --output-directory "$COVERAGE_DIR/coverage_html"
+    genhtml "$COVERAGE_DIR/coverage.info" --output-directory "$COVERAGE_DIR/coverage_html"
     # процент строкO
 
     COVERAGE=$(lcov --summary "$COVERAGE_DIR/coverage.info" | grep lines | awk '{print $2}' | tr -d '%')
